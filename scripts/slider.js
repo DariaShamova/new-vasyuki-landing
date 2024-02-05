@@ -1,5 +1,6 @@
 /* -- Variables -- */
 const list = document.querySelector('.slider__cards');
+const card = document.querySelectorAll('.slider__card');
 const dots = document.querySelectorAll('.slider__dot');
 const previousBtn = document.querySelector('.slider__arrow_pos_prev');
 const nextBtn = document.querySelector('.slider__arrow_pos_next');
@@ -7,7 +8,7 @@ const nextBtn = document.querySelector('.slider__arrow_pos_next');
 let position = 0;
 let screen = 0;
 let maxScreens = 5;
-let width = 335;
+let width = card[0].offsetWidth;
 
 function addDot(index) { // update navigation dots
   dots[index].classList.add('active');
@@ -55,3 +56,8 @@ previousBtn.onclick = function() {
   removeDot(screen);
   disablePrevious(screen);
 }
+
+function calculateWidth() {
+    width = card[0].offsetWidth;
+}
+window.addEventListener('resize', calculateWidth, false); //update for window size
